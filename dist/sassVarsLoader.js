@@ -29,6 +29,6 @@ function _default(content) {
 
   const vars = _objectSpread({}, (0, _readVarsFromJSONFiles.default)(files), (0, _readVarsFromJavascriptFiles.default)(files), options.vars);
 
-  const sassVarsString = (0, _convertJsToSass.default)(vars, syntax);
+  const sassVarsString = (0, _convertJsToSass.default)(vars, syntax, asValue);
   return `${sassVarsString}\n${content}`;
 }
