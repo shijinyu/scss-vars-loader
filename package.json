@@ -1,9 +1,8 @@
 {
   "name": "@epegzz/sass-vars-loader",
   "version": "3.2.0",
-  "author": "Daniel Schäfer <epegzz@gmail.com>",
-  "description":
-    "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
+  "author": "Daniel Schäfer <epegzz@gmail.com>, Shijinyu <sjym90@gmail.com>",
+  "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
   "keywords": [
     "scss",
     "sass",
@@ -30,39 +29,51 @@
     "coverage": "NODE_ENV=testing jest && codecov",
     "build": "NODE_ENV=production babel src -d dist",
     "lint": "NODE_ENV=testing eslint src/**/*.js",
-    "lint-check":
-    "NODE_ENV=testing eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "lint-check": "NODE_ENV=testing eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
   },
   "babel": {
-    "plugins": ["transform-object-rest-spread"],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ],
     "presets": [
       [
-        "env",
+        "@babel/preset-env",
         {
           "targets": {
-            "node": "4"
+            "node": "8"
           },
-          "useBuiltIns": true,
+          "useBuiltIns": "usage",
           "loose": true
         }
       ]
     ],
     "env": {
       "production": {
-        "ignore": ["**/*.test.js", "__mocks__"]
+        "ignore": [
+          "**/*.test.js",
+          "__mocks__"
+        ]
       },
       "testing": {
-        "ignore": ["dist/**/*"]
+        "ignore": [
+          "dist/**/*"
+        ]
       }
     }
   },
   "eslintConfig": {
-    "extends": ["es2015", "plugin:jest/recommended"],
-    "plugins": ["prettier", "jest"],
+    "extends": [
+      "es2015",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "prettier",
+      "jest"
+    ],
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module",
@@ -87,10 +98,18 @@
     "loader-utils": "~1.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/node": "^7.0.0-beta.42",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.42",
+    "@babel/plugin-transform-modules-umd": "^7.0.0-beta.42",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.42",
+    "@babel/polyfill": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-stage-2": "^7.0.0-beta.42",
+    "@babel/register": "^7.0.0-beta.42",
+    "@babel/runtime": "^7.0.0-beta.42",
     "babel-jest": "^21.2.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
     "codecov": "^3.0.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb-base": "^12.1.0",
