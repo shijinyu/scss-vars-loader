@@ -1,5 +1,5 @@
 {
-  "name": "@epegzz/sass-vars-loader",
+  "name": "scss-vars-loader",
   "version": "3.2.0",
   "author": "Daniel Schäfer <epegzz@gmail.com>, Shijinyu <sjym90@gmail.com>",
   "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
@@ -15,11 +15,11 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=8"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/epegzz/sass-vars-loader"
+    "url": "https://github.com/shijinyu/scss-vars-loader"
   },
   "engineStrict": true,
   "main": "dist/sassVarsLoader.js",
