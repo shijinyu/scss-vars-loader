@@ -25,7 +25,7 @@ function formatValue(value, syntax, asValue) {
   }
 
   if (typeof value === 'string') {
-    return asValue ? `"${asValue}"` : value;
+    return asValue ? `"${value}"` : value;
   }
 
   return JSON.stringify(value);
