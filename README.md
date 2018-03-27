@@ -160,7 +160,7 @@ module.exports = {
         { loader: "sass-loader", options: { includePaths: ["app/styles.scss"] } },
 
         // Reads Sass vars from files or inlined in the options property
-        { loader: "@epegzz/sass-vars-loader", options: {
+        { loader: "css-vars-loader", options: {
           syntax: 'scss',
           files: [
             // Option 2) Load vars from JSON file
