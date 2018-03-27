@@ -99,7 +99,6 @@ module.exports = {
 
         // Reads Sass vars from files or inlined in the options property
         { loader: "scss-vars-loader", options: {
-          syntax: 'scss',
           // Option 1) Specify vars here
           vars: {
             greenFromWebpackConfig: '#0f0'
@@ -161,7 +160,6 @@ module.exports = {
 
         // Reads Sass vars from files or inlined in the options property
         { loader: "css-vars-loader", options: {
-          syntax: 'scss',
           files: [
             // Option 2) Load vars from JSON file
             path.resolve(__dirname, 'config/sassVars.json')
@@ -217,8 +215,7 @@ module.exports = {
         { loader: "sass-loader", options: { includePaths: ["app/styles.scss"] } },
 
         // Reads Sass vars from files or inlined in the options property
-        { loader: "@epegzz/sass-vars-loader", options: {
-          syntax: 'scss',
+        { loader: "scss-vars-loader", options: {
           files: [
             // Option 3) Load vars from JavaScript file
             path.resolve(__dirname, 'config/sassVars.js')
