@@ -1,3 +1,4 @@
 module.exports = {
-  blueFromJS: 'blue'
+  blueFromJS: 'blue',
+  pathFromJS: '//baidu.com'
 };

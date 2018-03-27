@@ -1,23 +1,26 @@
-<h1 align="center">Sass Vars Loader</h1>
-<h3 align="center">Import Sass vars from Webpack config or from JS/JSON files</h3>
+<h1 align="center">Scss Vars Loader</h1>
+<h3 align="center">Import Scss vars from Webpack config or from JS/JSON files</h3>
 <p align="center">
-  <a target="_blank" href="https://travis-ci.org/epegzz/sass-vars-loader">
+  <!-- <a target="_blank" href="https://travis-ci.org/epegzz/sass-vars-loader">
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
-  </a>
-  <a target="_blank" href="https://codeclimate.com/github/epegzz/sass-vars-loader/maintainability">
+  </a> -->
+  <!-- <a target="_blank" href="https://codeclimate.com/github/epegzz/sass-vars-loader/maintainability">
     <img alt="Maintainability" src="https://img.shields.io/codeclimate/maintainability/epegzz/sass-vars-loader.svg?style=flat-square">
+  </a> -->
+  <a target="_blank" href="https://github.com/shijinyu/scss-vars-loader/stargazers">
+    <img alt="github Star" src="https://img.shields.io/github/stars/shijinyu/scss-vars-loader.svg">
   </a>
-  <a target="_blank" href="https://codecov.io/gh/epegzz/sass-vars-loader">
-    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/epegzz/sass-vars-loader.svg?style=flat-square">
+  <a target="_blank" href="https://github.com/shijinyu/scss-vars-loader/issues">
+    <img alt="open issues" src="https://img.shields.io/github/issues/shijinyu/scss-vars-loader.svg">
   </a>
-  <a target="_blank" href="https://www.npmjs.com/package/@epegzz/sass-vars-loader">
-    <img alt="npm version" src="https://img.shields.io/npm/v/@epegzz/sass-vars-loader.svg?style=flat-square">
+  <a target="_blank" href="https://www.npmjs.com/package/shijinyu/scss-vars-loader">
+    <img alt="npm version" src="https://img.shields.io/npm/v/scss-vars-loader.svg">
   </a>
-  <a target="_blank" href="https://www.npmjs.com/package/@epegzz/sass-vars-loader">
-    <img alt="npm installs" src="https://img.shields.io/npm/dm/@epegzz/sass-vars-loader.svg?style=flat-square">
+  <a target="_blank" href="https://www.npmjs.com/package/shijinyu/scss-vars-loader">
+    <img alt="npm installs" src="https://img.shields.io/npm/dw/scss-vars-loader.svg">
   </a>
-  <a target="_blank" href="https://david-dm.org/epegzz/sass-vars-loader">
-    <img alt="dependencies" src="https://img.shields.io/david/epegzz/sass-vars-loader.svg?style=flat-square">
+  <a target="_blank" href="https://github.com/shijinyu/scss-vars-loader/blob/master/LICENSE">
+    <img alt="LICENSE" src="https://img.shields.io/github/license/shijinyu/scss-vars-loader.svg">
   </a>
 </p>
 
@@ -30,14 +33,14 @@
 <li>✅ JSON Files</li>
 <li>✅ JavaScript Files</li>
 <li>✅ Inlined in Webpack Config</li>
+<li>✅ Map Props for Every Variable</li>
 
 
 
-##### Supports both syntax types:
+##### Supports ONLY SCSS types:
 
-<li>✅ SASS Syntax</li>
 <li>✅ SCSS Syntax</li>
-
+<li>❌ SASS Syntax</li>
 
 
 ##### Supports hot reload:
@@ -50,11 +53,11 @@
 
 using npm
 ```sh
-npm install @epegzz/sass-vars-loader --save-dev
+npm install scss-vars-loader --save-dev
 ```
 using yarn
 ```sh
-yarn add @epegzz/sass-vars-loader --dev
+yarn add scss-vars-loader --dev
 ```
 
 
@@ -95,11 +98,17 @@ module.exports = {
         { loader: "sass-loader", options: { includePaths: ["app/styles.scss"] } },
 
         // Reads Sass vars from files or inlined in the options property
-        { loader: "@epegzz/sass-vars-loader", options: {
+        { loader: "scss-vars-loader", options: {
           syntax: 'scss',
           // Option 1) Specify vars here
           vars: {
             greenFromWebpackConfig: '#0f0'
+          },
+          props: {
+            pathFromJS: {
+              asValue: true,
+              asDefault: true
+            }
           }
         }
       }]

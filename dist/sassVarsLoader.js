@@ -23,12 +23,12 @@ function _default(content) {
   this.cacheable();
   const options = _loaderUtils.default.getOptions(this) || {};
   const files = options.files || [];
-  const asValue = typeof options.asValue == 'boolean' || true;
   const syntax = options.syntax || 'scss';
+  const props = options.props || {};
   (0, _watchFilesForChanges.default)(this, files);
 
   const vars = _objectSpread({}, (0, _readVarsFromJSONFiles.default)(files), (0, _readVarsFromJavascriptFiles.default)(files), options.vars);
 
-  const sassVarsString = (0, _convertJsToSass.default)(vars, syntax, asValue);
+  const sassVarsString = (0, _convertJsToSass.default)(vars, props);
   return `${sassVarsString}\n${content}`;
 }

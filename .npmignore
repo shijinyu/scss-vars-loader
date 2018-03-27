@@ -25,4 +25,4 @@ src
 .eslintrc
 .nvmrc
 .gitignore
-
+__mocks__

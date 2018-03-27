@@ -9,8 +9,8 @@ export default function(content) {
 
   const options = loaderUtils.getOptions(this) || {};
   const files = options.files || [];
-  const asValue = (typeof options.asValue == 'boolean') || true;
   const syntax = options.syntax || 'scss';
+  const props = options.props || {};
 
   watchFilesForChanges(this, files);
 
@@ -20,7 +20,7 @@ export default function(content) {
     ...options.vars
   };
 
-  const sassVarsString = convertJsToSass(vars, syntax, asValue);
+  const sassVarsString = convertJsToSass(vars, props);
 
   return `${sassVarsString}\n${content}`;
 }

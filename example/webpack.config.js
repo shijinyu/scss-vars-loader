@@ -22,7 +22,7 @@ module.exports = {
 
           // Reads Sass vars from files or inlined in the options property
           {
-            loader: '@epegzz/sass-vars-loader',
+            loader: 'scss-vars-loader',
             options: {
               // Option 1) Specify vars here
               vars: {
@@ -33,7 +33,8 @@ module.exports = {
                 path.resolve(__dirname, 'config/sassVars.json'),
                 // Option 3) Load vars from JS file
                 path.resolve(__dirname, 'config/sassVars.js')
-              ]
+              ],
+              props: require('./config/props')
             }
           }
         ]

@@ -1,30 +1,38 @@
-function convertJsToSass(obj, syntax, asValue) {
-  const suffix = syntax === 'sass' ? '' : ';';
+function convertJsToSass(obj, props = {}) {
   const keys = Object.keys(obj);
   const lines = keys.map(
-    key => `$${key}: ${formatValue(obj[key], syntax, asValue)}${suffix}`
+    key => `$${key}: ${formatValue(obj[key], props[key])};`
   );
   return lines.join('\n');
 }
 
-function formatNestedObject(obj, syntax, asValue) {
+function formatNestedObject(obj, prop = {}) {
   const keys = Object.keys(obj);
   return keys
-    .map(key => `${key}: ${formatValue(obj[key], syntax, asValue)}`)
+    .map(key => `${key}: ${formatValue(obj[key], prop[key])}`)
     .join(', ');
 }
 
-function formatValue(value, syntax, asValue) {
+function formatValue(value, prop = {}) {
   if (value instanceof Array) {
-    return `(${value.map(formatValue).join(', ')})`;
+    let var_arr = value
+      .map((item, index) => formatValue(item, prop[index]))
+      .join(', ');
+    return `(${var_arr})`;
   }
 
   if (typeof value === 'object') {
-    return `(${formatNestedObject(value, syntax, asValue)})`;
+    return `(${formatNestedObject(value, prop)})`;
   }
 
   if (typeof value === 'string') {
-    return asValue ? `"${value}"` : value;
+    if (prop.asValue && !(value.startsWith('"') || value.endsWith('"'))) {
+      value = `"${value}"`;
+    }
+    if (prop.asDefault) {
+      value += '  !default';
+    }
+    return value;
   }
 
   return JSON.stringify(value);
